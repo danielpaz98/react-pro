@@ -28,7 +28,7 @@ export default function Navigation() {
 								<Component />
 							</Suspense>
 						}
-						path={path}
+						path={`${path}/*`}
 					/>
 				))}
 			</Routes>
