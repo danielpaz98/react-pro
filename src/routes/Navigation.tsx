@@ -1,5 +1,6 @@
+import { Suspense } from "react";
 import { NavLink, Link, Route, Routes } from "react-router-dom";
-import { LazyPage1, LazyPage2, LazyPage3 } from "~/01-lazyload/pages";
+import { routes } from "./routes";
 
 export default function Navigation() {
 	return (
@@ -8,27 +9,28 @@ export default function Navigation() {
 				<Link to="/">
 					<img alt="React Logo" src="/favicon.svg" />
 				</Link>
-
 				<ul>
-					<li>
-						<NavLink to="/lazy1">Lazy1</NavLink>
-					</li>
-
-					<li>
-						<NavLink to="/lazy2">Lazy2</NavLink>
-					</li>
-
-					<li>
-						<NavLink to="/lazy3">Lazy3</NavLink>
-					</li>
+					{routes.map(({ path, name }) => (
+						<li key={path}>
+							<NavLink to={path}>{name}</NavLink>
+						</li>
+					))}
 				</ul>
 			</nav>
 
 			<Routes>
 				<Route element={<h1>Home</h1>} path="/" />
-				<Route element={<LazyPage1 />} path="/lazy1" />
-				<Route element={<LazyPage2 />} path="/lazy2" />
-				<Route element={<LazyPage3 />} path="/lazy3" />
+				{routes.map(({ path, component: Component }) => (
+					<Route
+						key={path}
+						element={
+							<Suspense fallback={<h1>Cargando...</h1>}>
+								<Component />
+							</Suspense>
+						}
+						path={path}
+					/>
+				))}
 			</Routes>
 		</div>
 	);
