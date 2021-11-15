@@ -1,4 +1,5 @@
 import { NavLink, Link, Route, Routes } from "react-router-dom";
+import { LazyPage1, LazyPage2, LazyPage3 } from "~/01-lazyload/pages";
 
 export default function Navigation() {
 	return (
@@ -10,23 +11,24 @@ export default function Navigation() {
 
 				<ul>
 					<li>
-						<NavLink to="/">Home</NavLink>
+						<NavLink to="/lazy1">Lazy1</NavLink>
 					</li>
 
 					<li>
-						<NavLink to="/about">About</NavLink>
+						<NavLink to="/lazy2">Lazy2</NavLink>
 					</li>
 
 					<li>
-						<NavLink to="/users">Users</NavLink>
+						<NavLink to="/lazy3">Lazy3</NavLink>
 					</li>
 				</ul>
 			</nav>
 
 			<Routes>
 				<Route element={<h1>Home</h1>} path="/" />
-				<Route element={<h1>About</h1>} path="/about" />
-				<Route element={<h1>Users</h1>} path="/users" />
+				<Route element={<LazyPage1 />} path="/lazy1" />
+				<Route element={<LazyPage2 />} path="/lazy2" />
+				<Route element={<LazyPage3 />} path="/lazy3" />
 			</Routes>
 		</div>
 	);
