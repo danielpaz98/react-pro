@@ -21,7 +21,7 @@
   },
 	"rules": {
 		"prefer-const": "warn",
-		"no-unused-vars": "warn",
+		"no-unused-vars": "off",
 		"no-dupe-keys": "warn",
 		"array-callback-return": "warn",
 		"react/prop-types": "off",

@@ -7,7 +7,7 @@ import { ProductTitle } from "./ProductTitle";
 import { ProductDescription } from "./ProductDescription";
 import { ProductButtons } from "./ProductButtons";
 
-export { ProductImage, ProductTitle, ProductButtons };
+export { ProductImage, ProductTitle, ProductButtons, ProductDescription };
 
 export const ProductCard: ProductCardComponent = Object.assign(_ProductCard, {
 	Image: ProductImage,
